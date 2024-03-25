@@ -14,4 +14,3 @@ venv
 *.keras
 shape_predictor_68_face_landmarks.dat
 __pycache__
-last_model.pb
