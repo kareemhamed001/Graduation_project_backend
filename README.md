@@ -16,7 +16,7 @@
 <ol>
 <li>Clone the repository</li>
 <li>Install the required packages using <code>pip install -r requirements.txt</code></li>
-<li>Run the Flask app using <code>python app.py</code></li>
+<li>Run the Flask app using <code>flask --app main --debug run</code></li>
 <li>Open the browser and go to <code>http://127.0.0.1:5000/</code></li>
 </ol>
 <h2>How it works</h2>
