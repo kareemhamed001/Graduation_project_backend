@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deepfake</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.min.js') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+            integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+
+{% if exception_message %}
+    <div class="alert alert-danger">
+        {{ exception_message }}
+    </div>
+{% endif %}
+
+
+<div class="container" id="container">
+    <form action="" class="bg-light p-4 rounded " id="video_form" enctype="multipart/form-data">
+        <div class="my-2">
+            <label for="exampleFormControlFile1" class="form-label">Upload your video</label>
+            <input type="file" class="form-control" id="exampleFormControlFile1" name="video">
+        </div>
+        <div class="my-2">
+            <label for="exampleFormControlFile1" class="form-label">Number of frames</label>
+            <input type="number" class="form-control" id="exampleFormControlFile2" name="frames">
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit_button">Submit</button>
+    </form>
+
+    <div id="result">
+
+    </div>
+
+</div>
+
+
+<script type="text/javascript" charset="utf-8">
+    let video_form = document.getElementById('video_form');
+    let result = document.getElementById('result');
+    let submit_button = document.getElementById('submit_button');
+    let socket = io.connect('http://' + document.domain + ':' + location.port)
+
+    video_form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        result.innerHTML = '';
+        let frames = document.getElementById('exampleFormControlFile2').value;
+        let video = document.getElementById('exampleFormControlFile1').files[0];
+        let reader = new FileReader();
+        reader.onload = function (event) {
+            let videoBytes = event.target.result;
+            socket.emit('process_video', {frames: frames, video: video});
+            submit_button.disabled = true;
+        };
+        reader.readAsArrayBuffer(video);
+
+
+    });
+
+
+    socket.on('processing_response', function (data) {
+
+
+        result.innerHTML += `
+
+            <br>
+            the video is ${data['result']} with confidence of ${data['confidence']}%
+            `;
+
+
+        submit_button.disabled = false;
+
+        console.log('Progress from server:', data['result_video_path']);
+        let video = document.createElement('video');
+        video.src = data['result_video_path'];
+        video.width = 1280;
+        video.height = 720;
+        video.controls = true;
+        result.appendChild(video);
+
+    });
+
+    socket.on('processing_progress', function (data) {
+
+        let result = document.getElementById('result');
+        result.innerHTML += `
+            <br>
+            ${data['data']}
+            `;
+
+    });
+
+
+</script>
+</body>
+</html>

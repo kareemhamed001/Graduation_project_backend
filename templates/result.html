@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deepfake</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap/bootstrap.css') }}">
+    <script src="{{ url_for('static', filename='js/bootstrap/bootstrap.min.js') }}"></script>
+</head>
+<body>
+
+{% if exception_message %}
+    <div class="alert alert-danger">
+        {{ exception_message }}
+    </div>
+{% endif %}
+
+<div class="container">
+    <video width="256" height="256" controls>
+        <source src="{{ url_for('static', filename=video) }}" type="video/mp4">
+    </video>
+    <div class="d-flex flex-column">
+        <h2>
+            Result Report
+        </h2>
+        <p>
+            The video is {{ result }}
+            with confidence {{ confidence }}%
+        </p>
+
+    </div>
+</div>
+
+
+</body>
+</html>

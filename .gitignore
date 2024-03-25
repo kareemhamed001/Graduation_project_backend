@@ -1,0 +1,17 @@
+static/uploads
+static/results
+fold
+fold1
+results
+videos
+node_modules
+venv
+.idea
+*.mp4
+*.avi
+*.jpg
+*.h5
+*.keras
+shape_predictor_68_face_landmarks.dat
+__pycache__
+last_model.pb
