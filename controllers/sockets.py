@@ -41,7 +41,7 @@ def handle_disconnect():
 
 @socketio.on('process_media')
 def process_video(data):
-    print('start prooccess media')
+    print('start processing media')
     session_id = request.sid
     clients[session_id] = session_id
     join_room(session_id)
@@ -56,17 +56,15 @@ def process_video_thread(socketio, data, session_id):
 
     processing_start(socketio, session_id, 'Starting new thread for processing video')
 
-    n_frames = data['frames']
-    extract_faces = data['extract_faces']
-    if n_frames:
-        n_frames = int(data['frames'])
-    else:
-        n_frames = 30
-    media_type = data['type']
+    n_frames = int(data.get('frames', 30))
+    extract_faces = data.get('extract_faces', False)
+    media_type = data.get('type')
+
     print(f"Media type: {media_type}")
+
     if media_type == 'video':
         print('video')
-        video_bytes = data['media']
+        video_bytes = data.get('media')
 
         if video_bytes:
             generated_unique_id = str(uuid.uuid4())
@@ -76,10 +74,10 @@ def process_video_thread(socketio, data, session_id):
             print(f"Video saved to: {video_path}")
             print(f"Number of frames: {n_frames}")
 
-            cnnModel = CNNModel(model_path=model_path, input_size=input_size, extract_faces=extract_faces,
+            cnn_model = CNNModel(model_path=model_path, input_size=input_size, extract_faces=extract_faces,
                                 socketio=socketio, session_id=session_id)
 
-            result, confidence, result_video_path, frames_paths = cnnModel(input_video=video_path, n_frames=n_frames,
+            result, confidence, result_video_path, frames_paths = cnn_model(input_video=video_path, n_frames=n_frames,
                                                                            result_file_name=generated_unique_id)
 
             processing_result(socketio, session_id, result, confidence, result_video_path, frames_paths)
@@ -91,7 +89,7 @@ def process_video_thread(socketio, data, session_id):
 
     elif media_type == 'image':
         print('image')
-        image_bytes = data['media']
+        image_bytes = data.get('media')
         if image_bytes:
             generated_unique_id = str(uuid.uuid4())
             image_path = os.path.join(UPLOAD_FOLDER, f"{generated_unique_id}.jpg")
@@ -99,17 +97,15 @@ def process_video_thread(socketio, data, session_id):
                 f.write(image_bytes)
             print(f"Image saved to: {image_path}")
 
-            cnnModel = CNNModel(model_path=model_path, input_size=input_size, socketio=socketio,
+            cnn_model = CNNModel(model_path=model_path, input_size=input_size, socketio=socketio,
                                 session_id=session_id)
 
-            predicted_class, confidence = cnnModel.predict_image(image_path, generated_unique_id)
+            predicted_class, confidence = cnn_model.predict_image(image_path, generated_unique_id)
 
             processing_result(socketio, session_id, predicted_class, confidence, image_path, image_path)
             lock.release()
             # Remove session ID from clients dictionary
             del clients[session_id]
             print("Thread finished")
-
-
 def init():
     print("Initializing sockets controller")
