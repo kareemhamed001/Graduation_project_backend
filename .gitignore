@@ -1,5 +1,7 @@
 static/uploads
 static/results
+static/css/output.css
+static/images
 fold
 fold1
 results
@@ -14,3 +16,5 @@ venv
 *.keras
 shape_predictor_68_face_landmarks.dat
 __pycache__
+last_model.pb
+package-lock.json
