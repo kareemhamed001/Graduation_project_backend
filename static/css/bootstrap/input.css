@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* FAQ CSS */
+.item .activeIcon{
+  @apply hidden;
+}
+
+.item.active .inactiveIcon{
+  @apply hidden;
+}
+
+.item.active .activeIcon{
+  @apply block;
+}
+
+.item:not(.active) .content {
+  @apply h-0 overflow-hidden py-0
+}
+
+.item .content {
+  @apply p-6 h-[400px] md:h-[300px]
+}
+
+/* Table CSS */
+.module-border-wrap {
+  max-width: 250px;
+  padding: 1rem;
+  position: relative;
+  background: linear-gradient(to right, red, purple);
+  padding: 3px;
+}
+
+.module {
+  background: #222;
+  color: white;
+  padding: 2rem;
+}
+
+*{
+  margin: 0;
+  padding:0;
+  box-sizing : border-box;
+}
