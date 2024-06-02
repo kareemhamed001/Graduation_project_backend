@@ -1,155 +1,127 @@
 <!DOCTYPE html>
-<html lang="en" class="!scroll-smooth">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    {#  <link href="/dist/output.css" rel="stylesheet">#}
-    <link href="{{ url_for('static', filename='css/output.css') }}" rel="stylesheet">
-
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/SceneScanner.png') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
-            integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
-            crossorigin="anonymous"></script>
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,301,400,401,500,501,700,701,900,901&display=swap"
-          rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-style"></script>
-    <title>Scene Scanner</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link href="/dist/output.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="/src/img/SceneScanner.png">
+  <title>Scene Scanner</title>
 </head>
 
-<body class="h-screen bg-darkPurple scrollbar scrollbar-thumb-purple scrollbar-track-slate-700 font-Satoshi">
-<header class="bg-darkPurple bg-opacity-70 container flex-no-wrap fixed   top-0 flex justify-center md-items-center  w-full h-20  z-10">
-    <a href="/">
+<body class="h-screen bg-darkPurple scrollbar scrollbar-thumb-purple scrollbar-track-slate-700 ">
 
-        <img src="{{ url_for('static', filename='images/SceneScanner.png') }}" alt="Logo"
-             class="p-4 absolute w-24 h-30 left-4 top- ml-20 ">
-    </a>
-
-    <ul class="md:flex mt-8">
-
-        <li><a href="#"
-               class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom"
-               onclick="changeColor(event, 'text-cyan')">Home</a></li>
-        <li><a href="#Features"
-               class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom"
-               onclick="changeColor(event, 'text-cyan')">Features</a></li>
-        <li><a href="#Detection"
-               class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom"
-               onclick="changeColor(event, 'text-cyan')">Detection</a></li>
-        <li><a href="#FAQ"
-               class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom"
-               onclick="changeColor(event, 'text-cyan')">FAQ</a></li>
-        <li><a href="#AboutUs"
-               class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom"
-               onclick="changeColor(event, 'text-cyan')">About Us</a></li>
-        <li><a href="#Feedback"
-               class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom"
-               onclick="changeColor(event, 'text-cyan')">Feedback</a></li>
-    </ul>
-
-
-</header>
-<!-- Home Section -->
-<section id="home" class="relative ">
-    <div class="w-60 h-60 bg-purple absolute -top-8 -left-8 -z-10 blur-3xl opacity-10"></div>
-    <div class="w-[488px] h-[423px] bg-purple absolute bottom-20 -right-6 -z-10 blur-3xl opacity-20 hidden md:block">
-    </div>
-    <div class="w-32 h-32 bg-cyan absolute top-[450px] left-[150px] md:bottom-52 md:left-20 -z-10 blur-3xl opacity-20"></div>
-
-
-    <div class="md:bg-[url('/static/images/Waves.svg')] bg-no-repeat container h-full  text-white py-20">
+  <header class="bg-darkPurple bg-opacity-70 container flex-no-wrap fixed  top-0 flex justify-center md-items-center  w-full h-20  z-10">  
+        <a href="/">
+        <img src="/src/img/SceneScanner.png" alt="Logo" class="p-4 absolute w-24 h-30 left-4 top- ml-20 ">
+        </a>
+        
+            <ul class="md:flex mt-8" >
+            
+              <li><a href="#" class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom"  onclick="changeColor(event, 'text-cyan')">Home</a></li>
+              <li><a href="#Features" class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom" onclick="changeColor(event, 'text-cyan')">Features</a></li>
+              <li><a href="#Detection" class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom" onclick="changeColor(event, 'text-cyan')">Detection</a></li>
+              <li><a href="#FAQ" class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom" onclick="changeColor(event, 'text-cyan')">FAQ</a></li>
+              <li><a href="#" class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom" onclick="changeColor(event, 'text-cyan')">About Us</a></li>
+              <li><a href="#Feedback" class="menu-items px-2 py-4 text-white font-Satoshi-medium text-lg hover:bg-gradient-to-r from-LPurple via-lightPurple to-lighterPurple  bg-[length:43%_1px] bg-no-repeat bg-bottom" onclick="changeColor(event, 'text-cyan')">Feedback</a></li>
+            </ul>
+          
+        
+          </header>
+  <!-- Home Section -->
+  <section id="home" class="relative ">
+    
+      <div class="w-60 h-60 bg-purple absolute -top-8 -left-8 -z-10 blur-3xl opacity-10"></div>
+      <div class="w-[488px] h-[423px] bg-purple absolute bottom-20 -right-6 -z-10 blur-3xl opacity-20 hidden md:block">
+      </div>
+      <div class="w-32 h-32 bg-cyan absolute top-[450px] left-[150px] md:bottom-52 md:left-20 -z-10 blur-3xl opacity-20"></div>
+      
+      <div class="md:bg-[url('/src/img/Waves.svg')] bg-no-repeat container h-full  text-white py-20">
         <div class="flex flex-col ml-6 md:ml-16 md:flex-row mt-4">
-            <div class="text-left mb-12 md:w-2/5 md:pr-10">
-                <div>
-                    <h3
-                            class=" text-satoshi-p2 pb-2 text-white text-opacity-80 bg-[length:100%_2px] bg-gradient-to-r from-LPurple via-lighterPurple  bg-no-repeat bg-bottom">
-                        Deep Fake Detection</h3>
-
-                </div>
-                <h1 class="text-[65px] font-bold">Uncover the altered reality of deepfakes</h1>
-                <div class="flex my-10 ">
-                    <img src="{{ url_for('static', filename='images/Star 4.svg') }}">
-                    <p class="text-satoshi-p2 ml-2 text-white text-opacity-80">Reliably verify authenticity with
-                        deepfake
-                        detection tools</p>
-                </div>
-                <div class="flex flex-col items-center md:ml-0 md:flex-row gap-4 m-auto">
-                    <a href="#">
-                        <button
-                                class="flex  md:mb-0  md:px-6 py-3 pl-8 w-[200px] bg-cyan text-darkPurple rounded-md font-medium hover:bg-purple">
-                            Detection Now
-                            <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                 viewBox="0 0 24 24"
-                                 style="fill: rgba(0, 0, 0, 1);transform: msFilter">
-                                <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"></path>
-                            </svg>
-                        </button>
-                    </a>
-                    <a href="#">
-                        <button
-                                class="flex text-center md:px-6 py-3 pl-12 w-[200px] md:w-[150px] text-white border border-white border-opacity-20 rounded-md font-medium hover:bg-purple">
-                            <img class="mr-2" src="{{ url_for('static', filename='images/compass.svg') }}">
-                            About US
-                        </button>
-                    </a>
-                </div>
-                <p class="pt-10 text-satoshi-p3">PROJECT PLATFORMS</p>
-                <div class="flex gap-3 ">
-                    <div class="mt-3 border hover:bg-purple border-white border-opacity-20 rounded-md ">
-                        <a href="#">
-                            <img class="p-3" src="{{ url_for('static', filename='images/Kaggle.svg') }}">
-                        </a>
-                    </div>
-                    <div class="mt-3 border hover:bg-purple border-white border-opacity-20 rounded-md ">
-                        <a href="#"><i class='bx bxl-github text-4xl p-2'></i></a>
-                    </div>
-                    <div class="mt-3 border hover:bg-purple border-white border-opacity-20 rounded-md ">
-                        <a href="#"><i class='bx bxl-discord-alt text-4xl p-2'></i></a>
-                    </div>
-                </div>
+          <div class="text-left mb-12 md:w-2/5 md:pr-10">
+            <div>
+              <h3
+                class=" text-satoshi-p2 pb-2 text-white text-opacity-80 bg-[length:100%_2px] bg-gradient-to-r from-LPurple via-lighterPurple  bg-no-repeat bg-bottom">
+                Deep Fake Detection</h3>
 
             </div>
-            <div class=" flex items-center  lg:w-3/5">
-                <div class="hidden lg:block">
-                    <img class="p-3 absolute top-0 mt-24 w-60 "
-                         src="{{ url_for('static', filename='images/Human.svg') }}">
-                    <img class="p-3 w-44" src="{{ url_for('static', filename='images/fake.svg') }}">
-                </div>
-                <div class="">
-                    <img
-                            class="relative pb-2 md:absolute md:top-0 md:right-0 md:ml-60 md:mt-16 opacity-90  md:h-[580px] bg-gradient-to-l from-LPurple via-lighterPurple  bg-[length:100%_4px] bg-no-repeat bg-bottom"
-                            src="{{ url_for('static', filename='images/Hero pic.svg') }}">
-                    <div class="md:flex md:gap-4  md:absolute md:bottom-28 ">
-                        <a href="#">
-                            <button class="flex    font-medium ">
-                                <img class="p-3"
-                                     src="{{ url_for('static', filename='images/Graduation Project.svg') }}">
-                                <p class="mt-4">Graduation Project</p>
-                            </button>
-                        </a>
-                        <a href="#">
-                            <button class="flex    font-medium">
-                                <img class="p-3"
-                                     src="{{ url_for('static', filename='images/Training and Simulation.svg') }}">
-                                <p class="mt-4">Training and Simulation</p>
-                            </button>
-                        </a>
-                    </div>
+            <h1 class="text-[65px] font-bold">Uncover the altered reality of deepfakes</h1>
+            <div class="flex my-10 ">
+              <img src="/src/img/Star 4.svg">
+              <p class="text-satoshi-p2 ml-2 text-white text-opacity-80">Reliably verify authenticity with deepfake
+                detection tools</p>
+            </div>
+            <div class="flex flex-col items-center md:ml-0 md:flex-row gap-4 m-auto">
+              <a href="#">
+              <button
+                class="flex  md:mb-0  md:px-6 py-3 pl-8 w-[200px] bg-cyan text-darkPurple rounded-md font-medium hover:bg-purple">
+                Detection Now
+                <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  style="fill: rgba(0, 0, 0, 1);transform: msFilter">
+                  <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"></path>
+                </svg>
+              </button>
+              </a>
+              <a href="#">
+              <button
+                class="flex text-center md:px-6 py-3 pl-12 w-[200px] md:w-[150px] text-white border border-white border-opacity-20 rounded-md font-medium hover:bg-purple">
+                <img class="mr-2" src="/src/img/compass.svg">
+                About US
+              </button>
+            </a>
+            </div>
+            <p class="pt-10 text-satoshi-p3">PROJECT PLATFORMS</p>
+            <div class="flex gap-3 ">
+              <div class="mt-3 border hover:bg-purple border-white border-opacity-20 rounded-md ">
+                <a href="#">
+                  <img class="p-3" src="/src/img/Kaggle.svg">
+                </a>
+              </div>
+              <div class="mt-3 border hover:bg-purple border-white border-opacity-20 rounded-md ">
+                <a href="#"><i class='bx bxl-github text-4xl p-2'></i></a>
+              </div>
+              <div class="mt-3 border hover:bg-purple border-white border-opacity-20 rounded-md ">
+                <a href="#"><i class='bx bxl-discord-alt text-4xl p-2'></i></a>
+              </div>
+            </div>
 
-                </div>
+          </div>
+          <div class=" flex items-center  lg:w-3/5">
+            <div class="hidden lg:block">
+              <img class="p-3 absolute top-0 mt-24 w-60 " src="/src/img/Human.svg">
+              <img class="p-3 w-44" src="/src/img/fake.svg">
+            </div>
+            <div class="">
+              <img
+                class="relative pb-2 md:absolute md:top-0 md:right-0 md:ml-60 md:mt-16 opacity-90  md:h-[580px] bg-gradient-to-l from-LPurple via-lighterPurple  bg-[length:100%_4px] bg-no-repeat bg-bottom"
+                src="/src/img/Hero pic.svg">
+              <div class="md:flex md:gap-4  md:absolute md:bottom-28 ">
+                <a href="#">
+                  <button class="flex    font-medium ">
+                    <img class="p-3" src="/src/img/Graduation Project.svg">
+                    <p class="mt-4">Graduation Project</p>
+                  </button>
+                </a>
+                <a href="#">
+                  <button class="flex    font-medium">
+                    <img class="p-3" src="/src/img/Training and Simulation.svg">
+                    <p class="mt-4">Training and Simulation</p>
+                  </button>
+                </a>
+              </div>
 
             </div>
+
+          </div>
         </div>
-    </div>
+      </div>
+    
+  </section>
 
-</section>
-
-<!-- Features section -->
-<section class="bg-darkPurple" id="Features">
-    <h1 class=" flex my-8 justify-center items-center text-2xl font-bold text-white md:text-4xl">Features</h1>
-
+  <section class="bg-darkPurple" id="Features">
+    <h2 class=" flex my-8 justify-center items-center text-2xl font-bold text-white md:text-4xl">features</h2>
+    
       <div class="container px-4 md:px-12 py-12 mx-auto p-2">
         <div class="grid grid-cols-1 gap-8 lg:grid-cols-4 border border-BPurple  shadow p-4 md:p-6 text-center bg-LPurple">
          <!--Card1-->
@@ -167,7 +139,7 @@
                   </defs>
                   </svg>
             <h1 class="mr-16 mt-8 text-xl font-semibold text-white dark:text-gray-300">Media Upload</h1>
-
+    
             <p class="mr-10 mt-2 text-white dark:text-white">Lorem ipsum dolor sit ametisal consectetur adipisicing eiusmod tempor incididunt</p>
           </div>
 
@@ -179,11 +151,11 @@
                   </svg>
 
             <h1 class="mr-8 mt-6 text-xl font-semibold text-white">Detection Human</h1>
-
+    
             <p class="mr-10 mt-2 text-white dark:white text-sm">Lorem ipsum dolor sit ametisal consectetur adipisicing eiusmod tempor incididunt</p>
           </div>
 
-          <!--Card3-->
+          <!--Card3--> 
           <div class="flex flex-wrap flex-col pt-2 px-6 hover:bg-gradient-to-r rounded-xl from-BPurple to-cyan">
               <svg width="64" height="64" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M37 58.9688C40.1929 58.9688 42.7812 56.3804 42.7812 53.1875C42.7812 49.9946 40.1929 47.4062 37 47.4062C33.8071 47.4062 31.2188 49.9946 31.2188 53.1875C31.2188 56.3804 33.8071 58.9688 37 58.9688Z" fill="white"/>
@@ -194,14 +166,14 @@
                   <path d="M67.0625 21.9688C67.0625 22.7354 67.367 23.4706 67.9091 24.0127C68.4512 24.5548 69.1865 24.8594 69.9531 24.8594C70.7198 24.8594 71.455 24.5548 71.9971 24.0127C72.5392 23.4706 72.8438 22.7354 72.8438 21.9688V14.4531H67.0625V21.9688ZM32.375 25.4375C30.4626 25.4375 28.9062 23.8812 28.9062 21.9688V2.3125H10.4062V12.7188C13.0825 12.719 15.6547 13.7549 17.5843 15.6094H26.5938V16.7656H18.6249C19.4288 17.7997 20.0294 18.9767 20.3951 20.2344H26.5938V21.3906H20.6564C20.7512 21.956 20.8125 22.533 20.8125 23.125C20.8102 23.9035 20.7202 24.6792 20.5442 25.4375H32.375ZM20.8125 6.35938H26.5938V7.51562H20.8125V6.35938ZM18.5 11.5625H13.875V6.9375H18.5V11.5625ZM20.8125 12.1406V10.9844H26.5938V12.1406H20.8125Z" fill="white"/>
                   <path d="M29.4844 21.9688C29.4844 22.7354 29.7889 23.4706 30.331 24.0127C30.8731 24.5548 31.6084 24.8594 32.375 24.8594C33.1416 24.8594 33.8769 24.5548 34.419 24.0127C34.9611 23.4706 35.2656 22.7354 35.2656 21.9688V14.4531H29.4844V21.9688ZM10.4062 13.875C7.953 13.875 5.60022 14.8496 3.86551 16.5843C2.1308 18.319 1.15625 20.6717 1.15625 23.125C1.15625 25.5783 2.1308 27.931 3.86551 29.6657C5.60022 31.4004 7.953 32.375 10.4062 32.375C12.8595 32.375 15.2123 31.4004 16.947 29.6657C18.6817 27.931 19.6562 25.5783 19.6562 23.125C19.6562 20.6717 18.6817 18.319 16.947 16.5843C15.2123 14.8496 12.8595 13.875 10.4062 13.875ZM10.1392 27.3349C9.95561 27.5529 9.69837 27.6958 9.41634 27.7365C9.1343 27.7772 8.84714 27.7129 8.60944 27.5558L5.14069 25.2433L6.42297 23.3192L9.02684 25.0559L14.1421 18.9151L15.9192 20.3962L10.1392 27.3349Z" fill="white"/>
                   </svg>
-
-
-
+                  
+      
+      
               <h1 class="mr-20 mt-4 text-xl font-semibold text-white dark:text-gray-300">Real Or Fake</h1>
-
+      
               <p class="mr-8 mt-2 text-white dark:text-white">Lorem ipsum dolor sit ametisal consectetur adipisicing eiusmod tempor incididunt</p>
             </div>
-    <!--Card4-->
+    <!--Card4--> 
           <div class="flex flex-wrap flex-col px-6 hover:bg-gradient-to-r rounded-xl from-BPurple to-cyan">
               <svg width="65" height="65" viewBox="0 0 65 65" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <mask id="path-1-inside-1_378_462" fill="white">
@@ -210,875 +182,315 @@
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M0.908892 8.00012C0.672924 8.00387 0.448061 8.10099 0.283542 8.27019C0.119023 8.43939 0.0282566 8.66689 0.0311186 8.90287V56.8418C-0.0114341 56.9987 -0.0103263 57.1642 0.0343224 57.3205C0.0789711 57.4767 0.165464 57.6178 0.28446 57.7285C0.395174 57.8429 0.534455 57.9255 0.687857 57.9678C0.84126 58.0102 1.0032 58.0107 1.15688 57.9694H49.0937C49.3303 57.9694 49.5572 57.8754 49.7245 57.7081C49.8917 57.5408 49.9857 57.3139 49.9857 57.0773C49.9857 56.8408 49.8917 56.6139 49.7245 56.4466C49.5572 56.2793 49.3303 56.1853 49.0937 56.1853H1.81521V8.90287C1.81666 8.78362 1.79418 8.66528 1.7491 8.55487C1.70402 8.44445 1.63726 8.3442 1.55276 8.26003C1.46826 8.17587 1.36774 8.1095 1.25715 8.06486C1.14656 8.02021 1.02814 7.9982 0.908892 8.00012ZM47.3239 18.7511C45.8555 18.7511 44.6477 19.959 44.6477 21.4273C44.6477 21.8858 44.778 22.3122 44.9867 22.6922L32.2911 36.7974C31.9456 36.6526 31.5732 36.5832 31.1987 36.594C30.8243 36.6047 30.4564 36.6954 30.1199 36.8598L24.7497 31.4897C24.9192 31.1418 25.0227 30.7582 25.0227 30.3478C25.0227 28.8795 23.8131 27.6717 22.3466 27.6717C20.8782 27.6717 19.6704 28.8795 19.6704 30.3478C19.6704 30.7029 19.7436 31.0401 19.872 31.3505L7.5707 42.2889C7.18017 42.0665 6.73913 41.9479 6.28972 41.9445C4.82141 41.9445 3.61358 43.1524 3.61358 44.6207C3.61358 46.0872 4.82141 47.2969 6.28972 47.2969C7.75624 47.2969 8.96586 46.0872 8.96586 44.6207C8.96431 44.2758 8.89521 43.9346 8.76247 43.6163L21.0674 32.6797C21.4492 32.8902 21.8809 33.024 22.3466 33.024C22.7569 33.024 23.1405 32.9187 23.4884 32.751L28.8621 38.1248C28.6869 38.4801 28.5942 38.8704 28.5909 39.2666C28.5909 40.7349 29.7987 41.9428 31.267 41.9428C32.7335 41.9428 33.9432 40.7349 33.9432 39.2666C33.9432 38.8081 33.8129 38.3781 33.6042 37.9999L46.3016 23.8929C46.6174 24.025 46.9617 24.1035 47.3239 24.1035C48.7904 24.1035 50 22.8938 50 21.4273C50 19.959 48.7904 18.7511 47.3239 18.7511ZM47.3239 20.5353C47.827 20.5353 48.2159 20.9242 48.2159 21.4273C48.2159 21.9304 47.827 22.3194 47.3239 22.3194C47.2062 22.321 47.0895 22.2991 46.9805 22.2549C46.8715 22.2107 46.7725 22.145 46.6893 22.0618C46.6062 21.9787 46.5405 21.8797 46.4963 21.7707C46.4521 21.6617 46.4301 21.5449 46.4318 21.4273C46.4318 20.9242 46.8207 20.5353 47.3239 20.5353ZM22.3466 29.4558C22.8497 29.4558 23.2386 29.8447 23.2386 30.3478C23.2386 30.851 22.8497 31.2399 22.3466 31.2399C22.1284 31.2381 21.9186 31.1555 21.7578 31.008C21.7263 30.9657 21.691 30.9263 21.6525 30.8902C21.5465 30.7605 21.4797 30.6031 21.46 30.4367C21.4403 30.2703 21.4686 30.1017 21.5415 29.9508C21.6145 29.7999 21.729 29.673 21.8716 29.585C22.0142 29.497 22.179 29.4515 22.3466 29.454V29.4558ZM31.267 38.3763C31.7701 38.3763 32.1591 38.7653 32.1591 39.2684C32.1591 39.7715 31.7701 40.1604 31.267 40.1604C31.1494 40.1621 31.0327 40.1402 30.9237 40.096C30.8147 40.0517 30.7157 39.9861 30.6325 39.9029C30.5493 39.8197 30.4837 39.7207 30.4395 39.6117C30.3952 39.5027 30.3733 39.386 30.375 39.2684C30.375 38.7653 30.7639 38.3763 31.267 38.3763ZM6.28972 43.7287C6.53949 43.7287 6.7625 43.8232 6.92307 43.982C7.08364 44.1426 7.18176 44.3691 7.18176 44.6207C7.18176 45.1238 6.79283 45.5128 6.28972 45.5128C6.17211 45.5144 6.05535 45.4925 5.94637 45.4483C5.83738 45.404 5.73837 45.3384 5.6552 45.2552C5.57203 45.1721 5.50638 45.073 5.46215 44.9641C5.41791 44.8551 5.39599 44.7383 5.39767 44.6207C5.39767 44.1176 5.7866 43.7287 6.28972 43.7287Z" fill="white"/>
                   <path d="M0.908892 8.00012L0.940745 9.99986L0.94104 9.99986L0.908892 8.00012ZM0.0311186 8.90287H2.03112V8.89075L2.03097 8.87862L0.0311186 8.90287ZM0.0311186 56.8418L1.96135 57.3655L2.03112 57.1083V56.8418H0.0311186ZM0.28446 57.7285L1.72113 56.3372L1.68487 56.2997L1.6467 56.2642L0.28446 57.7285ZM1.15688 57.9694V55.9694H0.892682L0.637545 56.038L1.15688 57.9694ZM1.81521 56.1853H-0.184788V58.1853H1.81521V56.1853ZM1.81521 8.90287L-0.184641 8.87862L-0.184788 8.89074V8.90287H1.81521ZM44.9867 22.6922L46.4732 24.0302L47.4235 22.9744L46.7397 21.7294L44.9867 22.6922ZM32.2911 36.7974L31.5178 38.6419L32.8275 39.191L33.7776 38.1354L32.2911 36.7974ZM30.1199 36.8598L28.7056 38.274L29.7151 39.2836L30.9979 38.6568L30.1199 36.8598ZM24.7497 31.4897L22.9517 30.6137L22.3272 31.8956L23.3355 32.9039L24.7497 31.4897ZM19.872 31.3505L21.201 32.8451L22.2639 31.9L21.7201 30.5858L19.872 31.3505ZM7.5707 42.2889L6.58088 44.0268L7.82755 44.7368L8.89968 43.7835L7.5707 42.2889ZM6.28972 41.9445L6.30465 39.9446L6.29718 39.9445H6.28972V41.9445ZM8.96586 44.6207H10.9659L10.9658 44.6117L8.96586 44.6207ZM8.76247 43.6163L7.43382 42.1214L6.36741 43.0692L6.91654 44.386L8.76247 43.6163ZM21.0674 32.6797L22.0331 30.9283L20.7953 30.2457L19.7387 31.1848L21.0674 32.6797ZM23.4884 32.751L24.9026 31.3368L23.8987 30.333L22.6199 30.9494L23.4884 32.751ZM28.8621 38.1248L30.6559 39.0092L31.2896 37.7239L30.2763 36.7106L28.8621 38.1248ZM28.5909 39.2666L26.591 39.25L26.5909 39.2583V39.2666H28.5909ZM33.6042 37.9999L32.1177 36.6619L31.1653 37.7199L31.8531 38.9662L33.6042 37.9999ZM46.3016 23.8929L47.073 22.0477L45.7641 21.5005L44.815 22.5549L46.3016 23.8929ZM47.3239 22.3194V20.3194H47.3096L47.2953 20.3196L47.3239 22.3194ZM46.4318 21.4273L48.4316 21.4559L48.4318 21.4416V21.4273H46.4318ZM22.3466 29.4558H20.3466V31.4558H22.3466V29.4558ZM22.3466 31.2399L22.3304 33.2398L22.3385 33.2399H22.3466V31.2399ZM21.7578 31.008L20.1546 32.2037L20.267 32.3544L20.4056 32.4816L21.7578 31.008ZM21.6525 30.8902L20.1042 32.1562L20.1883 32.259L20.2853 32.3499L21.6525 30.8902ZM22.3466 29.454H24.3466V27.4835L22.3763 27.4542L22.3466 29.454ZM31.267 40.1604V38.1604H31.2527L31.2384 38.1606L31.267 40.1604ZM30.375 39.2684L32.3748 39.297L32.375 39.2827V39.2684H30.375ZM6.92307 43.982L8.33731 42.5678L8.32937 42.5599L6.92307 43.982ZM6.28972 45.5128V43.5128H6.27542L6.26111 43.513L6.28972 45.5128ZM5.39767 44.6207L7.39747 44.6493L7.39767 44.635V44.6207H5.39767ZM0.877039 6.00037C0.112016 6.01255 -0.617001 6.3274 -1.15038 6.87596L1.71746 9.66442C1.51312 9.87457 1.23383 9.99519 0.940745 9.99986L0.877039 6.00037ZM-1.15038 6.87596C-1.68375 7.42451 -1.97801 8.16207 -1.96873 8.92713L2.03097 8.87862C2.03453 9.17171 1.92179 9.45427 1.71746 9.66442L-1.15038 6.87596ZM-1.96888 8.90287V56.8418H2.03112V8.90287H-1.96888ZM-1.89911 56.3182C-2.03707 56.8267 -2.03348 57.3633 -1.88873 57.8699L1.95737 56.771C2.01283 56.9651 2.0142 57.1707 1.96135 57.3655L-1.89911 56.3182ZM-1.88873 57.8699C-1.74398 58.3765 -1.46356 58.834 -1.07778 59.1929L1.6467 56.2642C1.79449 56.4017 1.90192 56.5769 1.95737 56.771L-1.88873 57.8699ZM-1.15221 59.1199C-0.793275 59.4906 -0.341722 59.7584 0.155616 59.8957L1.2201 56.04C1.41063 56.0926 1.58362 56.1952 1.72113 56.3372L-1.15221 59.1199ZM0.155616 59.8957C0.652952 60.033 1.17797 60.0348 1.67622 59.9008L0.637545 56.038C0.82843 55.9867 1.02957 55.9874 1.2201 56.04L0.155616 59.8957ZM1.15688 59.9694H49.0937V55.9694H1.15688V59.9694ZM49.0937 59.9694C49.8607 59.9694 50.5963 59.6647 51.1387 59.1223L48.3102 56.2939C48.518 56.0861 48.7998 55.9694 49.0937 55.9694V59.9694ZM51.1387 59.1223C51.681 58.58 51.9857 57.8444 51.9857 57.0773H47.9857C47.9857 56.7835 48.1025 56.5017 48.3102 56.2939L51.1387 59.1223ZM51.9857 57.0773C51.9857 56.3103 51.681 55.5747 51.1387 55.0324L48.3102 57.8608C48.1025 57.653 47.9857 57.3712 47.9857 57.0773H51.9857ZM51.1387 55.0324C50.5963 54.49 49.8607 54.1853 49.0937 54.1853V58.1853C48.7998 58.1853 48.518 58.0686 48.3102 57.8608L51.1387 55.0324ZM49.0937 54.1853H1.81521V58.1853H49.0937V54.1853ZM3.81521 56.1853V8.90287H-0.184788V56.1853H3.81521ZM3.81506 8.92713C3.81975 8.54051 3.74687 8.15687 3.60072 7.7989L-0.102527 9.31084C-0.158516 9.1737 -0.186438 9.02673 -0.184641 8.87862L3.81506 8.92713ZM3.60072 7.7989C3.45457 7.44093 3.23813 7.11591 2.96418 6.84304L0.14133 9.67703C0.0363827 9.57249 -0.0465375 9.44797 -0.102527 9.31084L3.60072 7.7989ZM2.96418 6.84304C2.69024 6.57017 2.36436 6.35501 2.00582 6.21027L0.508484 9.91944C0.371125 9.864 0.24628 9.78156 0.14133 9.67703L2.96418 6.84304ZM2.00582 6.21027C1.64728 6.06553 1.26335 5.99416 0.876745 6.00037L0.94104 9.99986C0.792929 10.0022 0.645844 9.97489 0.508484 9.91944L2.00582 6.21027ZM47.3239 16.7511C44.751 16.7511 42.6477 18.8544 42.6477 21.4273H46.6477C46.6477 21.0635 46.9601 20.7511 47.3239 20.7511V16.7511ZM42.6477 21.4273C42.6477 22.274 42.8897 23.0288 43.2337 23.6551L46.7397 21.7294C46.6662 21.5956 46.6477 21.4976 46.6477 21.4273H42.6477ZM43.5002 21.3543L30.8046 35.4594L33.7776 38.1354L46.4732 24.0302L43.5002 21.3543ZM33.0644 34.9529C32.4562 34.6979 31.8005 34.5758 31.1412 34.5948L31.2562 38.5931C31.3459 38.5906 31.4351 38.6072 31.5178 38.6419L33.0644 34.9529ZM31.1412 34.5948C30.482 34.6138 29.8344 34.7733 29.2418 35.0629L30.9979 38.6568C31.0785 38.6174 31.1665 38.5957 31.2562 38.5931L31.1412 34.5948ZM31.5341 35.4456L26.1639 30.0755L23.3355 32.9039L28.7056 38.274L31.5341 35.4456ZM26.5477 32.3656C26.8312 31.7837 27.0227 31.1021 27.0227 30.3478H23.0227C23.0227 30.4142 23.0072 30.4999 22.9517 30.6137L26.5477 32.3656ZM27.0227 30.3478C27.0227 27.7741 24.9168 25.6717 22.3466 25.6717V29.6717C22.7094 29.6717 23.0227 29.9849 23.0227 30.3478H27.0227ZM22.3466 25.6717C19.7737 25.6717 17.6704 27.775 17.6704 30.3478H21.6704C21.6704 29.9841 21.9828 29.6717 22.3466 29.6717V25.6717ZM17.6704 30.3478C17.6704 30.9816 17.8016 31.5778 18.024 32.1152L21.7201 30.5858C21.6855 30.5023 21.6704 30.4242 21.6704 30.3478H17.6704ZM18.543 29.8559L6.24171 40.7943L8.89968 43.7835L21.201 32.8451L18.543 29.8559ZM8.56051 40.551C7.87278 40.1593 7.09609 39.9505 6.30465 39.9446L6.27479 43.9445C6.38217 43.9453 6.48756 43.9736 6.58088 44.0268L8.56051 40.551ZM6.28972 39.9445C3.71682 39.9445 1.61358 42.0478 1.61358 44.6207H5.61358C5.61358 44.2569 5.92599 43.9445 6.28972 43.9445V39.9445ZM1.61358 44.6207C1.61358 47.1909 3.71596 49.2969 6.28972 49.2969V45.2969C5.92686 45.2969 5.61358 44.9836 5.61358 44.6207H1.61358ZM6.28972 49.2969C8.86083 49.2969 10.9659 47.1918 10.9659 44.6207H6.96586C6.96586 44.9827 6.65166 45.2969 6.28972 45.2969V49.2969ZM10.9658 44.6117C10.9631 44.0056 10.8417 43.4059 10.6084 42.8465L6.91654 44.386C6.94874 44.4632 6.9655 44.546 6.96588 44.6297L10.9658 44.6117ZM10.0911 45.1111L22.396 34.1746L19.7387 31.1848L7.43382 42.1214L10.0911 45.1111ZM20.1016 34.4311C20.7277 34.7763 21.4889 35.024 22.3466 35.024V31.024C22.273 31.024 22.1706 31.0041 22.0331 30.9283L20.1016 34.4311ZM22.3466 35.024C23.1061 35.024 23.7854 34.8281 24.3568 34.5526L22.6199 30.9494C22.4956 31.0094 22.4077 31.024 22.3466 31.024V35.024ZM22.0742 34.1652L27.4478 39.539L30.2763 36.7106L24.9026 31.3368L22.0742 34.1652ZM27.0682 37.2404C26.7599 37.8658 26.5967 38.5527 26.591 39.25L30.5908 39.2832C30.5916 39.1881 30.6138 39.0945 30.6559 39.0092L27.0682 37.2404ZM26.5909 39.2666C26.5909 41.8395 28.6941 43.9428 31.267 43.9428V39.9428C30.9033 39.9428 30.5909 39.6304 30.5909 39.2666H26.5909ZM31.267 43.9428C33.8373 43.9428 35.9432 41.8403 35.9432 39.2666H31.9432C31.9432 39.6295 31.6298 39.9428 31.267 39.9428V43.9428ZM35.9432 39.2666C35.9432 38.4231 35.703 37.6636 35.3552 37.0335L31.8531 38.9662C31.9229 39.0926 31.9432 39.193 31.9432 39.2666H35.9432ZM35.0907 39.3379L47.7881 25.2309L44.815 22.5549L32.1177 36.6619L35.0907 39.3379ZM45.5301 25.7382C46.0634 25.9611 46.6692 26.1035 47.3239 26.1035V22.1035C47.2542 22.1035 47.1713 22.0888 47.073 22.0477L45.5301 25.7382ZM47.3239 26.1035C49.895 26.1035 52 23.9984 52 21.4273H48C48 21.7893 47.6858 22.1035 47.3239 22.1035V26.1035ZM52 21.4273C52 18.8536 49.8941 16.7511 47.3239 16.7511V20.7511C47.6867 20.7511 48 21.0644 48 21.4273H52ZM47.3239 22.5353C46.7224 22.5353 46.2159 22.0287 46.2159 21.4273H50.2159C50.2159 19.8196 48.9316 18.5353 47.3239 18.5353V22.5353ZM46.2159 21.4273C46.2159 20.8259 46.7224 20.3194 47.3239 20.3194V24.3194C48.9316 24.3194 50.2159 23.035 50.2159 21.4273H46.2159ZM47.2953 20.3196C47.4451 20.3174 47.5938 20.3454 47.7326 20.4017L46.2284 24.1081C46.5852 24.2529 46.9674 24.3247 47.3525 24.3192L47.2953 20.3196ZM47.7326 20.4017C47.8715 20.4581 47.9976 20.5417 48.1036 20.6476L45.2751 23.476C45.5474 23.7483 45.8715 23.9632 46.2284 24.1081L47.7326 20.4017ZM48.1036 20.6476C48.2095 20.7536 48.2931 20.8797 48.3495 21.0185L44.6431 22.5228C44.7879 22.8796 45.0028 23.2037 45.2751 23.476L48.1036 20.6476ZM48.3495 21.0185C48.4058 21.1574 48.4338 21.3061 48.4316 21.4559L44.432 21.3987C44.4265 21.7838 44.4983 22.166 44.6431 22.5228L48.3495 21.0185ZM48.4318 21.4273C48.4318 22.0287 47.9253 22.5353 47.3239 22.5353V18.5353C45.7162 18.5353 44.4318 19.8196 44.4318 21.4273H48.4318ZM22.3466 31.4558C21.7451 31.4558 21.2386 30.9493 21.2386 30.3478H25.2386C25.2386 28.7402 23.9543 27.4558 22.3466 27.4558V31.4558ZM21.2386 30.3478C21.2386 29.7464 21.7451 29.2399 22.3466 29.2399V33.2399C23.9543 33.2399 25.2386 31.9555 25.2386 30.3478H21.2386ZM22.3627 29.24C22.6397 29.2422 22.906 29.3471 23.11 29.5344L20.4056 32.4816C20.9312 32.9639 21.617 33.2341 22.3304 33.2398L22.3627 29.24ZM23.361 29.8123C23.2588 29.6752 23.1446 29.5474 23.0198 29.4305L20.2853 32.3499C20.2375 32.3051 20.1938 32.2562 20.1546 32.2037L23.361 29.8123ZM23.2009 29.6243C23.336 29.7896 23.4211 29.99 23.4462 30.202L19.4738 30.6714C19.5382 31.2163 19.7569 31.7314 20.1042 32.1562L23.2009 29.6243ZM23.4462 30.202C23.4712 30.414 23.4352 30.6288 23.3423 30.821L19.7408 29.0806C19.502 29.5746 19.4094 30.1265 19.4738 30.6714L23.4462 30.202ZM23.3423 30.821C23.2494 31.0132 23.1036 31.1749 22.9219 31.287L20.8213 27.8829C20.3544 28.1711 19.9795 28.5866 19.7408 29.0806L23.3423 30.821ZM22.9219 31.287C22.7402 31.3991 22.5303 31.457 22.3168 31.4538L22.3763 27.4542C21.8277 27.4461 21.2882 27.5948 20.8213 27.8829L22.9219 31.287ZM20.3466 29.454V29.4558H24.3466V29.454H20.3466ZM31.267 40.3763C30.6656 40.3763 30.1591 39.8698 30.1591 39.2684H34.1591C34.1591 37.6607 32.8747 36.3763 31.267 36.3763V40.3763ZM30.1591 39.2684C30.1591 38.6669 30.6656 38.1604 31.267 38.1604V42.1604C32.8747 42.1604 34.1591 40.8761 34.1591 39.2684H30.1591ZM31.2384 38.1606C31.3882 38.1585 31.537 38.1864 31.6758 38.2428L30.1715 41.9491C30.5284 42.094 30.9106 42.1657 31.2956 42.1602L31.2384 38.1606ZM31.6758 38.2428C31.8147 38.2991 31.9408 38.3828 32.0467 38.4887L29.2183 41.3171C29.4906 41.5894 29.8147 41.8043 30.1715 41.9491L31.6758 38.2428ZM32.0467 38.4887C32.1527 38.5947 32.2363 38.7208 32.2926 38.8596L28.5863 40.3639C28.7311 40.7207 28.946 41.0448 29.2183 41.3171L32.0467 38.4887ZM32.2926 38.8596C32.349 38.9984 32.3769 39.1472 32.3748 39.297L28.3752 39.2398C28.3697 39.6248 28.4415 40.0071 28.5863 40.3639L32.2926 38.8596ZM32.375 39.2684C32.375 39.8698 31.8685 40.3763 31.267 40.3763V36.3763C29.6593 36.3763 28.375 37.6607 28.375 39.2684H32.375ZM6.28972 45.7287C6.02458 45.7287 5.73882 45.6237 5.51677 45.4041L8.32937 42.5599C7.78618 42.0228 7.0544 41.7287 6.28972 41.7287V45.7287ZM5.50885 45.3962C5.29114 45.1785 5.18176 44.895 5.18176 44.6207H9.18176C9.18176 43.8433 8.87613 43.1066 8.33729 42.5678L5.50885 45.3962ZM5.18176 44.6207C5.18176 44.0193 5.68825 43.5128 6.28972 43.5128V47.5128C7.89742 47.5128 9.18176 46.2284 9.18176 44.6207H5.18176ZM6.26111 43.513C6.41092 43.5108 6.55965 43.5387 6.69851 43.5951L5.19423 47.3015C5.55106 47.4463 5.9333 47.5181 6.31832 47.5126L6.26111 43.513ZM6.69851 43.5951C6.83737 43.6515 6.96349 43.7351 7.06942 43.841L4.24098 46.6694C4.51325 46.9417 4.83739 47.1566 5.19423 47.3015L6.69851 43.5951ZM7.06942 43.841C7.17536 43.947 7.25898 44.0731 7.31533 44.2119L3.60896 45.7162C3.75378 46.073 3.96869 46.3971 4.24098 46.6694L7.06942 43.841ZM7.31533 44.2119C7.37168 44.3508 7.39961 44.4995 7.39747 44.6493L3.39788 44.5921C3.39237 44.9771 3.46414 45.3594 3.60896 45.7162L7.31533 44.2119ZM7.39767 44.6207C7.39767 45.2221 6.89119 45.7287 6.28972 45.7287V41.7287C4.68202 41.7287 3.39767 43.013 3.39767 44.6207H7.39767Z" fill="white" mask="url(#path-1-inside-1_378_462)"/>
                   </svg>
-
+    
             <h1 class="mt-6 mr-8 text-xl font-semibold text-white dark:text-gray-300">Behavioral Analysis</h1>
-
+    
             <p class="mt-2 mr-10 text-white dark:text-white">Lorem ipsum dolor sit ametisal consectetur adipisicing eiusmod tempor incididunt</p>
           </div>
         </div>
       </div>
     </section>
-
 <!--Detection-->
-<section class=" bg-darkPurple" id="Detection">
-    <div class="mt-2">
-        <div class="flex flex-col justify-start items-center max-h-screen">
-            <div class="mt-16">
-                <h1 class="text-4xl font-bold text-center text-white mb-8">Discover Insights Together</h1>
-                <h1 class="text-4xl font-bold text-center text-white mt-[-2rem] ">lets detect!</h1>
+<section class="h-screen bg-darkPurple" id= "Detection">
+  <div class="mt-2">
+  <div class="flex flex-col justify-start items-center max-h-screen">
+      <div class="mt-16">
+        <h1 class="text-4xl font-bold text-center text-white mb-8">Discover Insights Together</h1>
+        <h1 class="text-4xl font-bold text-center text-white mt-[-2rem] ">lets detect!</h1>
+      </div>
+    
+      <div class="flex items-center justify-center p-6 w-[70%] h-96">
+        <label for="dropzone-file" class="flex flex-col items-center justify-center w-full h-full border-2 border-Orange border-dashed rounded-lg cursor-pointer bg-LPurple">
+            <input type="file" id="dropzone-file" class="hidden" />
+            <div class="flex flex-col items-center justify-center pt-6 pb-8">
+                <svg class="w-16 h-16 mb-2 text-white dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                </svg>
+                <p class="mb-8 text-4xl text-white font-semibold" style="text-shadow: -1px -1px 0 Orange;">
+                    <span class="font-semibold">Upload Photo or Video</span>
+                </p>
+                <p class="text-xs text-white" style="text-shadow: -1px -1px 0 #F24E1E;">
+                    We accept JPG photos, PNG images, and videos
+                </p>
             </div>
-
-            <div class="flex items-center justify-center p-6 w-[70%] h-96" id="upload-section" style="height:490px;">
-                <label for="dropzone-file"
-                       class="flex flex-col items-center justify-center w-full h-full border-2 border-Orange border-dashed rounded-lg cursor-pointer bg-LPurple">
-
-                    <div class="flex flex-col items-center justify-center pt-6 pb-8">
-                        <svg class="w-16 h-16 mb-2 text-white dark:text-white" aria-hidden="true"
-                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                  d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                        </svg>
-                        <p class="mb-8 text-4xl text-white font-semibold" style="text-shadow: -1px -1px 0 Orange;">
-                            <span class="font-semibold">Upload Photo or Video</span>
-                        </p>
-                        <p class="text-xs text-white" style="text-shadow: -1px -1px 0 #F24E1E;">
-                            We accept JPG photos, PNG images, and videos
-                        </p>
-                    </div>
-                </label>
-            </div>
-
-            <div id="file-display" class="w-[70%] h-96 mt-6 flex justify-center items-center" style="display: none;">
-                <img id="uploaded-image" style="max-width: 100%; max-height: 100%;"/>
-                <video id="uploaded-video" style="max-width: 100%; max-height: 100%;" controls></video>
-            </div>
-
-            <form action="" class="w-[100%] flex justify-center" id="video_form" enctype="multipart/form-data">
-
-                <input name="media" type="file" id="dropzone-file" class="hidden"/>
-                <div class="w-[65%] h-[70%] mt-6">
-                    <label id="frames-input-label" for="frames-input" style="display: none"
-                           class="flex flex-col items-center justify-center  border-2 border-cyan border-dashed rounded-xl cursor-pointer bg-petroleum">
-                        <input id="frames-input"
-                               class="bg-LPurple  text-white text-sm rounded-lg w-full p-2.5 dark:placeholder-white dark:text-white flex justify-center items-end "
-                               placeholder="Please Select Number of frames ( by defult 30)"/>
-                    </label>
-                </div>
-                <hr>
-                <div class="mt-6">
-                    <label id="extract-faces-input-label" for="extract-faces-input" class="text-white">
-                        Extract Faces
-                    </label>
-                    <input type="checkbox" id="extract-faces-input"
-                           class="bg-LPurple  text-white text-sm rounded-lg w-full p-2.5 dark:placeholder-white dark:text-white flex justify-center items-end "/>
-
-                </div>
-            </form>
-
-        </div>
+        </label>
     </div>
+    
+  <div class="w-[65%] h-[70%]"></div>
+
+<div class="w-[65%] h-[70%] mt-6">
+  <label for="dropzone-file" class="flex flex-col items-center justify-center  border-2 border-cyan border-dashed rounded-xl cursor-pointer bg-petroleum">
+  <input class="bg-LPurple  text-white text-sm rounded-lg w-full p-2.5 dark:placeholder-white dark:text-white flex justify-center items-end " placeholder="Please Select Number of frames ( by defult 30)"  /> 
+</label>
+
     <div class="flex justify-center mt-8 p-4">
-        <button form="video_form"
-                class="flex justify-center p-4 w-[15%] bg-cyan text-darkPurple rounded-sm font-medium hover:bg-purple">
-            Detect Now
-        </button>
+    <button class="flex justify-center p-4 w-[15%] bg-cyan text-darkPurple rounded-sm font-medium hover:bg-purple">Detect Now</button>
     </div>
-</section>
+  </div>
 
-<!-- Table SECTION -->
-<section id="table" class="processingContainer">
-    <div class="ml-6 md:ml-32 mr-6 md:mr-32 text-white ">
-        <h1 class="md:text-satoshi-h3 text-satoshi-h4 mb-9">Frame Processing</h1>
-        <div class="flex flex-row">
-            <table class="w-full overflow-hidden  ">
 
-                <thead class="   ">
-                <tr class="border-t rounded-xl flex flex-row justify-between  bg-gradient-to-r from-LPurple  to-darkGray bg-opacity-70 ">
-                    <th
-                            scope="col"
-                            class=" p-3 text-sm font-semibold tracking-wide text-left rounded-l-2xl flex  items-center pl-10"
-                    >
-                        Number
-                        <img class="pl-3" src="{{ url_for('static', filename='images/Icon.svg') }}">
-                    </th>
-                    <th
-                            scope="col"
-                            class="p-3 text-sm font-semibold tracking-wide text-center flex items-center"
-                    >
-                        Fake or Real
-                        <img class="pl-3" src="{{ url_for('static', filename='images/Icon.svg') }}">
-                    </th>
-                    <th
-                            scope=""
-                            class="p-3 text-sm font-semibold tracking-wide text-right flex items-center pr-10"
-                    >
-                        Percentages
-                        <img class="pl-3 " src="{{ url_for('static', filename='images/Icon.svg') }}">
-                    </th>
-                </tr>
-                </thead>
-                <tbody id="results-body">
-
-                </tbody>
-            </table>
+</div>
+</div>
+  <!-- Table SECTION -->
+<section id="table" class>
+  <div class="ml-6 md:ml-32 mr-6 md:mr-32 text-white ">
+  <h1 class="md:text-satoshi-h3 text-satoshi-h4 mb-9">Frame Processing</h1>
+  <div class="flex flex-row">
+          <table class="w-full overflow-hidden  ">
+            
+            <thead class="   ">
+            <tr class="border-t rounded-xl flex flex-row justify-between  bg-gradient-to-r from-LPurple  to-darkGray bg-opacity-70 ">
+              <th 
+              scope="col"
+              class=" p-3 text-sm font-semibold tracking-wide text-left rounded-l-2xl flex  items-center pl-10"
+              >
+              Number
+              <img class="pl-3" src="/src/img/Icon.svg">
+            </th>
+            <th 
+              scope="col"
+              class="p-3 text-sm font-semibold tracking-wide text-center flex items-center"
+              >
+              Fake or Real
+              <img class="pl-3" src="/src/img/Icon.svg">
+            </th>
+            <th 
+              scope=""
+              class="p-3 text-sm font-semibold tracking-wide text-right flex items-center pr-10"
+              >
+              Percentages
+              <img class="pl-3 " src="/src/img/Icon.svg">
+            </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t  flex flex-row justify-between bg-gradient-to-r from-darkGreen  to-lightGreen   mt-3 rounded-xl ">
+              <td class="p-3 text-sm  tracking-wide text-center flex items-center pl-16">1</td>
+              <td class="p-3 text-sm  tracking-wide text-center flex items-center ">fake</td>
+              <td class="p-3 text-sm  tracking-wide text-center flex items-center pr-16">95%</td>
+            </tr>
+            <tr class="border-t flex flex-row justify-between bg-gradient-to-r from-darkGreen  to-lightGreen mt-3 rounded-xl">
+              <td class="p-3 text-sm  tracking-wide text-center flex items-center pl-16">2</td>
+              <td class="p-3 text-sm  tracking-wide text-center flex items-center ">fake</td>
+              <td class="p-3 text-sm  tracking-wide text-center flex items-center pr-16">98%</td>
+            </tr>
+            
+            <tr class="border-t  flex flex-row justify-between bg-gradient-to-r from-darkGreen  to-lightGreen mt-3 rounded-xl">
+              <td class="p-3 text-sm  tracking-wide text-center flex items-center pl-16">3</td>
+              <td class="p-3 text-sm  tracking-wide text-center flex items-center ">real</td>
+              <td class="p-3 text-sm  tracking-wide text-center flex items-center pr-16">50%</td>
+            </tr>
+        
+          </tbody>
+          </table>
         </div>
         <div class="flex justify-center mt-12 ">
-            <div class="border-t rounded-xl text-satoshi-h5 md:text-satoshi-h4 lg:text-satoshi-h3 flex items-center justify-center py-5 px-5  bg-gradient-to-r from-darkGreen  to-lightGreen">
-                <div class="text-cyan mr-14">Result :<span class="text-white pl-2" id="class_name"></span></div>
-                <div class="text-cyan">Confidence :<span class="text-white pl-2" id="confidence"></span></div>
-            </div>
+        <div class="border-t rounded-xl text-satoshi-h5 md:text-satoshi-h4 lg:text-satoshi-h3 flex items-center justify-center py-5 px-5  bg-gradient-to-r from-darkGreen  to-lightGreen">
+          <div class="text-cyan mr-14">Result :<span class="text-white pl-2">Fake</span></div>
+          <div class="text-cyan">Accuracy :<span class="text-white pl-2">80%</span></div>
         </div>
-    </div>
+      </div>
+</div>
 </section>
 
 
-<section class="container mx-auto p-20 ml-10 processingContainer">
-    <div class="flex justify-between items-center mb-4">
-        <h2 class="text-white font-satoshi-variable text-4xl md:text-5xl lg:text-3xl ml-6 ">Frames</h2>
-        <div>
-            <svg width="80" height="56" viewBox="0 0 128 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="80" width="56" height="56" rx="4" fill="#3DDEED" fill-opacity="0.1"
-                      onclick="slideRight('framesContainer')"/>
-                <path d="M100 20L98.59 21.41L104.17 27H92V29H104.17L98.59 34.59L100 36L108 28L100 20Z" fill="#3DDEED"/>
-                <rect x="56" y="56" width="56" height="56" rx="4" transform="rotate(-180 56 56)" fill="#3DDEED"
-                      fill-opacity="0.1" onclick="slideLeft('framesContainer')"/>
-                <path d="M28 36L29.41 34.59L23.83 29H36V27H23.83L29.41 21.41L28 20L20 28L28 36Z" fill="#3DDEED"/>
-            </svg>
-        </div>
-    </div>
 
-    <!--frames-->
-    <div class="overflow-hidden ">
-        <div class="carousel-container flex " style="height: 400px ;" id="framesContainer">
-
-        </div>
-    </div>
-    </div>
-</section>
-
-<!-- Analysis -->
-<section class=" container mx-auto p-20 ml-10 processingContainer">
-    <div class="flex justify-between items-center mb-4">
-        <h2 class="text-white font-satoshi-variable text-4xl md:text-5xl lg:text-3xl ml-6">Analysis</h2>
-    </div>
-    <div class="md:flex">
-        <div class="w-full md:w-3/4 lg:w-1/2 mr-8 mb-8 md:mb-0">
-
-            <div class="bg-Bblack p-6 rounded shadow-lg border-2 border-white-100">
-                <h1 class="text-2xl text-white mb-8">Accuracy per time</h1>
-                <canvas id="myChart"></canvas>
-            </div>
-        </div>
-        <!--Doughnut chart -->
-        <div class="w-full md:w-3/4 lg:w-1/2 ">
-
-            <div class="bg-Bblack p-6 rounded shadow-lg border-2 border-white-100">
-                <h1 class="text-2xl text-white mb-8">Accuracy</h1>
-                <h1 class="text-2xl text-center text-white mb-8">Result : <span>Fake</span></h1>
-                <canvas id="doChart"></canvas>
-            </div>
-        </div>
-    </div>
-</section>
-<!--our resources-->
-<section class="container mx-auto p-20 ml-10">
-    <div class="flex justify-between items-center mb-4">
-        <h2 class="text-white font-satoshi-variable text-4xl md:text-5xl lg:text-3xl ml-6 ">Our Resources</h2>
-        <div>
-            <svg width="80" height="56" viewBox="0 0 128 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="80" width="56" height="56" rx="4" fill="#3DDEED" fill-opacity="0.1"
-                      onclick="slideRight('carouselResources')"/>
-                <path d="M100 20L98.59 21.41L104.17 27H92V29H104.17L98.59 34.59L100 36L108 28L100 20Z" fill="#3DDEED"/>
-                <rect x="56" y="56" width="56" height="56" rx="4" transform="rotate(-180 56 56)" fill="#3DDEED"
-                      fill-opacity="0.1" onclick="slideLeft('carouselResources')"/>
-                <path d="M28 36L29.41 34.59L23.83 29H36V27H23.83L29.41 21.41L28 20L20 28L28 36Z" fill="#3DDEED"/>
-            </svg>
-        </div>
-    </div>
-
-
-    <div class="overflow-hidden ">
-        <div class="carousel-container flex " style="height: 400px ;" id="carouselResources">
-            <!-- Your carousel item content goes here -->
-            <img src="{{ url_for('static', filename='images/img1.png') }}" alt="Image 2" class="carousel-item p-4"
-                 style="object-fit:cover ; width: 400px; height: auto;">
-            <img src="{{ url_for('static', filename='images/img2.png') }}" alt="Image 3" class="carousel-item p-4"
-                 style="object-fit:cover ; width: 400px; height: auto;">
-            <img src="{{ url_for('static', filename='images/img3.png') }}" alt="Image 1" class="carousel-item p-4"
-                 style="object-fit:cover ; width: 400px; height: auto;">
-            <img src="{{ url_for('static', filename='images/img1.png') }}" alt="Image 5" class="carousel-item p-4"
-                 style="object-fit:cover ; width: 400px; height: auto;">
-            <img src="{{ url_for('static', filename='images/img2.png') }}" alt="Image 7" class="carousel-item p-4"
-                 style="object-fit:cover ; width: 400px; height: auto;">
-            <img src="{{ url_for('static', filename='images/img3.png') }}" alt="Image 8" class="carousel-item p-4"
-                 style="object-fit:cover ; width: 400px; height: auto;">
-            <img src="{{ url_for('static', filename='images/img4.png') }}" alt="Image 9" class="carousel-item p-4"
-                 style="object-fit:cover ; width: 400px; height: auto;">
-        </div>
-    </div>
-    </div>
-</section>
-{#about us section#}
-<section class="AboutUs" id="AboutUs">
-    <div id="accordion" class=" w-[85%] flex-col items-center m-auto text-white ">
-        <div class="text-satoshi-h2 font-bold flex justify-center my-12 ">Who We Are</div>
-
-        <!-- Kareem -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-14 mb-20">
-            <div>
-                <img src="{{ url_for('static', filename='images/Kareem2.svg') }}" class="w-96">
-                <div class="bg-white rounded-lg w-80  text-black pl-4 py-2 relative left-16 md:left-40 bottom-11">
-                    Backend development: where the magic happens, but users never see
-                </div>
-            </div>
-            <div class="md:w-[440px]">
-                <h2 class="text-satoshi-h3 font-bold">Kareem Hamed </h2>
-                <h2 class="text-satoshi-h3 font-bold">Backend Developer</h2>
-                <p>For three years, I've been a backend developer in the job market, currently overseeing real-world
-                    projects. My responsibility in this projects entails backend development and AI
-                    model enhancements.</p>
-                <div class="flex items-center  mt-4 md:ml-80 ml-72">
-                    <a href="https://github.com/kareemhamed001"><i
-                            class='bx bxl-github text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="https://www.linkedin.com/in/kareemhamed001/"><i
-                            class='bx bxl-linkedin text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="https://www.kaggle.com/kareemturk"><i><img class="h-7 "
-                                                                        src="{{ url_for('static', filename='images/Kaggle.svg') }}"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Anwar -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-52 mb-20">
-            <div class="md:w-[460px]">
-                <h2 class="text-satoshi-h3 font-bold">Ahmed Anwar </h2>
-                <h2 class="text-satoshi-h3 font-bold">Frontend Developer</h2>
-                <p>a Frontend Developer & Graphic designer, responsible for Frontend of website & any Graphical design
-                    in this project , I participated in certain aspects of AI model within the project and another parts
-                    in documentation.
-                </p>
-                <div class="flex  mt-4 md:mb-0 mb-4">
-                    <a href="https://github.com/anwar232 "><i class='bx bxl-github text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="https://www.linkedin.com/in/ahmed-anwar-68a352204/"><i
-                            class='bx bxl-linkedin text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="https://www.behance.net/Ahmed23Anwar"><i
-                            class='bx bxl-behance text-4xl hover:text-purple'></i></a>
-                </div>
-            </div>
-            <div>
-                <img src="{{ url_for('static', filename='images/Anwar.png') }}" class="w-96 ">
-                <div class="bg-white rounded-lg w-80  text-black pl-4 py-2 relative md:right-24 bottom-11">Whatever the
-                    mind of man can conceive and believe , it can achieve
-                </div>
-            </div>
-        </div>
-
-        <!-- Alaa -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-40 mb-20">
-            <div class="">
-                <img src="{{ url_for('static', filename='images/Alaa2.svg') }}" class="w-96 ">
-                <div class="bg-white rounded-lg w-80  text-black pl-4 py-2 relative left-14 md:left-40 bottom-11">It's
-                    not about the ideas, It's about making ideas happen
-                </div>
-            </div>
-            <div>
-                <h2 class="text-satoshi-h3 font-bold">Alaa Elbosaily </h2>
-                <h2 class="text-satoshi-h3 font-bold">UI/UX Developer</h2>
-                <p class="w-96"> a seasoned UI/UX Developer with three years of experience in marketing and UI/UX,
-                    responsible for UX processes and website UI design in this project , I participated in certain
-                    aspects of AI model within the project.
-                </p>
-                <div class="flex  mt-4 ml-64">
-                    <a href="#"><i class='bx bxl-figma text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="http://www.linkedin.com/in/alaa-el-bosaily"><i
-                            class='bx bxl-linkedin text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="http://www.behance.net/Alaaelbosaily"><i
-                            class='bx bxl-behance text-4xl hover:text-purple'></i></a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Romisaa -->
-        <div class=" grid grid-cols-1 md:grid-cols-2 lg:gap-52 mb-20">
-            <div>
-                <h2 class="text-satoshi-h3 font-bold">Romisaa Khaled</h2>
-                <h2 class="text-satoshi-h3 font-bold">full stack developer</h2>
-                <p class="w-96">I am a versatile full stack developer with a passion for incorporating AI models into
-                    front end projects, With 2 years of experience in graphic design, my work combines creativity and
-                    technical expertise to deliver visually stunning and intelligent solutions.
-                </p>
-                <div class="flex  mt-4 mb-4 md:mb-0">
-                    <a href="#"><i class='bx bxl-github text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="#"><i class='bx bxl-linkedin text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="#"><i class='bx bxl-behance text-4xl hover:text-purple'></i></a>
-                </div>
-            </div>
-            <div>
-                <img src="{{ url_for('static', filename='images/Romisaa.png') }}" class="w-96 flex ">
-                <div class="bg-white rounded-lg w-80  text-black pl-4 py-2 relative md:right-24 bottom-11">Do not wait
-                    to strike till the iron is hot, but make it hot by striking
-                </div>
-            </div>
-        </div>
-
-        <!-- Ashraket -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-14 mb-20">
-            <div>
-                <img src="{{ url_for('static', filename='images/Ashrakat.png') }}" class="w-96">
-                <div class="bg-white rounded-lg w-80  text-black pl-4 py-2 relative left-14 md:left-40 bottom-11">Every
-                    day is a new beginning, Take a deep breath, Smile and start again
-                </div>
-            </div>
-            <div class="md:w-[460px]">
-                <h2 class="text-satoshi-h3 font-bold">Ashraket Anwer </h2>
-                <h2 class="text-satoshi-h3 font-bold">Frontend Developer</h2>
-                <p>Frontend developer and network programmer, member of web developers team in this project and helps in
-                    enhancing the AI model and gathering dataset.
-                </p>
-                <div class="flex  mt-4 md:ml-80 ml-72">
-                    <a href="#"><i class='bx bxl-figma text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="#"><i class='bx bxl-linkedin text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="#"><i class='bx bxl-behance text-4xl hover:text-purple'></i></a>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Sondos -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:gap-52 mb-20">
-            <div class="md:w-[420px]">
-                <h2 class="text-satoshi-h3 font-bold">Sondos Mohamed</h2>
-                <h2 class="text-satoshi-h3 font-bold">Data Scientist</h2>
-                <p class="">I have a profound passion for continuous learning, particularly in the field of artificial
-                    intelligence, which I find deeply captivating. Currently, my professional focus lies in Oracle APEX
-                    development, where I have accrued two years of valuable experience. In addition to my career
-                    pursuits, I am actively engaged in project aimed at constructing model designed to help us in our
-                    life ,made some charts to show our idea.
-                </p>
-                <div class="flex  mt-4 mb-4 md:mb-0">
-                    <a href="#"><i class='bx bxl-github text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="https://www.linkedin.com/in/sondos-mohamed-said "><i
-                            class='bx bxl-linkedin text-3xl mr-3 hover:text-purple'></i></a>
-                    <a href="#"><i class='bx bxl-behance text-4xl hover:text-purple'></i></a>
-                </div>
-            </div>
-            <div>
-                <img src="{{ url_for('static', filename='images/Sondos.png') }}" class="w-96 ">
-                <div class="bg-white rounded-lg w-80  text-black pl-4 py-2 relative md:right-24 bottom-11">There is no
-                    escape from pain in this world, so choose your pain
-                </div>
-            </div>
-        </div>
-
-    </div>
-    </div>
-</section>
-<!-- FAQ SECTION -->
-<section class="FAQ " id="FAQ">
+  <!-- FAQ SECTION -->
+  <section class="FAQ " id="FAQ">
     <div id="accordion" class="lg:w-[50%] md:w-[70%] w-[85%] m-auto text-white  mb-16">
-        <div class="text-satoshi-h2 font-bold flex justify-center mb-6">F.A.Q</div>
-        <div class="item  mb-4 rounded-lg overflow-hidden">
-            <div class="header p-5 bg-white bg-opacity-5 flex justify-between items-center cursor-pointer">
-                <div class="font-bold text-satoshi-h5">What are the different types of virtual headsets available?</div>
-                <i class='bx bx-up-arrow-alt text-2xl text-purple activeIcon'></i>
-                <i class='bx bx-down-arrow-alt text-2xl inactiveIcon'></i>
-            </div>
-            <div class="content bg-white bg-opacity-10 text-satoshi-p2 transition-all duration-500">
-                <p class="mb-5">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt
-                    error maxime
-                    libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis
-                    tempora nisi
-                    voluptates quam?
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt
-                    error maxime
-                    libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis
-                    tempora nisi
-                    voluptates quam?
-                </p>
-            </div>
+      <div class="text-satoshi-h2 font-bold flex justify-center mb-6">F.A.Q</div>
+      <div class="item  mb-4 rounded-lg overflow-hidden">
+        <div class="header p-5 bg-white bg-opacity-5 flex justify-between items-center cursor-pointer">
+          <div class="font-bold text-satoshi-h5">What are the different types of virtual headsets available?</div>
+          <i class='bx bx-up-arrow-alt text-2xl text-purple activeIcon'></i>
+          <i class='bx bx-down-arrow-alt text-2xl inactiveIcon'></i>
         </div>
+        <div class="content bg-white bg-opacity-10 text-satoshi-p2 transition-all duration-500">
+          <p class="mb-5">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt error maxime
+            libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis tempora nisi
+            voluptates quam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt error maxime
+            libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis tempora nisi
+            voluptates quam?
+          </p>
+        </div>
+      </div>
 
-        <div class="item  mb-4 rounded-lg overflow-hidden">
-            <div class="header p-5 bg-white bg-opacity-5 flex justify-between items-center cursor-pointer">
-                <div class="font-bold text-satoshi-h5">How does a virtual headset work?</div>
-                <i class='bx bx-up-arrow-alt text-2xl text-purple activeIcon'></i>
-                <i class='bx bx-down-arrow-alt text-2xl inactiveIcon'></i>
-            </div>
-            <div class="content bg-white bg-opacity-10  text-satoshi-p2 transition-all duration-500">
-                <p class="mb-5">
-                    Virtual headsets are equipped with various sensors to track the user's movements. These sensors can
-                    include
-                    accelerometers, gyroscopes, and sometimes external cameras or base stations. They constantly monitor
-                    the
-                    position and orientation of the headset and sometimes the user's hand controllers.
-                </p>
-                <p>
-                    The headset has one or two high-resolution displays, one for each eye, positioned in front of the
-                    user's
-                    eyes. These displays show stereoscopic 3D images, creating a sense of depth and immersion. Between
-                    the
-                    displays and the user's eyes, help focus the images and adjust them for the user's field of view.
-                </p>
-            </div>
+      <div class="item  mb-4 rounded-lg overflow-hidden">
+        <div class="header p-5 bg-white bg-opacity-5 flex justify-between items-center cursor-pointer">
+          <div class="font-bold text-satoshi-h5">How does a virtual headset work?</div>
+          <i class='bx bx-up-arrow-alt text-2xl text-purple activeIcon'></i>
+          <i class='bx bx-down-arrow-alt text-2xl inactiveIcon'></i>
         </div>
+        <div class="content bg-white bg-opacity-10  text-satoshi-p2 transition-all duration-500">
+          <p class="mb-5">
+            Virtual headsets are equipped with various sensors to track the user's movements. These sensors can include
+            accelerometers, gyroscopes, and sometimes external cameras or base stations. They constantly monitor the
+            position and orientation of the headset and sometimes the user's hand controllers.
+          </p>
+          <p>
+            The headset has one or two high-resolution displays, one for each eye, positioned in front of the user's
+            eyes. These displays show stereoscopic 3D images, creating a sense of depth and immersion. Between the
+            displays and the user's eyes, help focus the images and adjust them for the user's field of view.
+          </p>
+        </div>
+      </div>
 
-        <div class="item  mb-4 rounded-lg overflow-hidden">
-            <div class="header p-5 bg-white bg-opacity-5 flex justify-between items-center cursor-pointer">
-                <div class="font-bold text-satoshi-h5">Do I need a powerful computer to use a virtual headset?</div>
-                <i class='bx bx-up-arrow-alt text-2xl text-purple activeIcon'></i>
-                <i class='bx bx-down-arrow-alt text-2xl inactiveIcon'></i>
-            </div>
-            <div class="content bg-white bg-opacity-10  text-satoshi-p2 transition-all duration-500">
-                <p class="mb-5">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt
-                    error maxime
-                    libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis
-                    tempora nisi
-                    voluptates quam?
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt
-                    error maxime
-                    libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis
-                    tempora nisi
-                    voluptates quam?
-                </p>
-            </div>
+      <div class="item  mb-4 rounded-lg overflow-hidden">
+        <div class="header p-5 bg-white bg-opacity-5 flex justify-between items-center cursor-pointer">
+          <div class="font-bold text-satoshi-h5">Do I need a powerful computer to use a virtual headset?</div>
+          <i class='bx bx-up-arrow-alt text-2xl text-purple activeIcon'></i>
+          <i class='bx bx-down-arrow-alt text-2xl inactiveIcon'></i>
         </div>
+        <div class="content bg-white bg-opacity-10  text-satoshi-p2 transition-all duration-500">
+          <p class="mb-5">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt error maxime
+            libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis tempora nisi
+            voluptates quam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt error maxime
+            libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis tempora nisi
+            voluptates quam?
+          </p>
+        </div>
+      </div>
 
-        <div class="item  mb-4 rounded-lg overflow-hidden">
-            <div class="header p-5 bg-white bg-opacity-5 flex justify-between items-center cursor-pointer">
-                <div class="font-bold text-satoshi-h5">What are the main applications of virtual headsets?</div>
-                <i class='bx bx-up-arrow-alt text-2xl text-purple activeIcon'></i>
-                <i class='bx bx-down-arrow-alt text-2xl inactiveIcon'></i>
-            </div>
-            <div class="content bg-white bg-opacity-10  text-satoshi-p2 transition-all duration-500">
-                <p class="mb-5">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt
-                    error maxime
-                    libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis
-                    tempora nisi
-                    voluptates quam?
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt
-                    error maxime
-                    libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis
-                    tempora nisi
-                    voluptates quam?
-                </p>
-            </div>
+      <div class="item  mb-4 rounded-lg overflow-hidden">
+        <div class="header p-5 bg-white bg-opacity-5 flex justify-between items-center cursor-pointer">
+          <div class="font-bold text-satoshi-h5">What are the main applications of virtual headsets?</div>
+          <i class='bx bx-up-arrow-alt text-2xl text-purple activeIcon'></i>
+          <i class='bx bx-down-arrow-alt text-2xl inactiveIcon'></i>
         </div>
+        <div class="content bg-white bg-opacity-10  text-satoshi-p2 transition-all duration-500">
+          <p class="mb-5">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt error maxime
+            libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis tempora nisi
+            voluptates quam?
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat deserunt eos incidunt error maxime
+            libero numquam quasi, facilis doloribus earum dignissimos veritatis pariatur! Placeat veritatis tempora nisi
+            voluptates quam?
+          </p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- FOOTER SECTION -->
-<footer class="p-10 bg-opacity-5 bg-white" id="Feedback">
+  <!-- FOOTER SECTION -->
+  <footer class="p-10 bg-opacity-5 bg-white" id="Feedback">
     <div class=" text-white ">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
+      <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2">
 
-                <div class="m-5">
-                    <a href="/">
-                        <img class="h-[96.5px] ml-4"
-                             src="{{ url_for('static', filename='images/SceneScannerW1.png') }}"/>
-                    </a>
-                    <div class="flex gap-6 pb-5 mt-2">
+          <div class="m-5">
+            <a href="/">
+              <img class="h-[96.5px] ml-4" src="/src/img/SceneScannerW1.png" />
+            </a>
+            <div class="flex gap-6 pb-5 mt-2">
 
-                        <a href="#"><i class='bx bxl-github text-xl hover:text-purple'></i></a>
-                        <a href="#"><i class='bx bxl-instagram-alt text-xl hover:text-purple'></i></a>
-                        <a href="#"><i class='bx bxl-discord-alt text-xl hover:text-purple'></i></a>
-                    </div>
-                </div>
-
-                <div class="m-5 pt-5">
-                    <h4 class=" text-satoshi-p1 pb-2">Menu</h4>
-                    <ul class="text-satoshi-p2 ">
-                        <a href="#">
-                            <li class="text-salate mb-3 hover:text-purple">Home</li>
-                        </a>
-                        <a href="#">
-                            <li class="text-salate mb-3 hover:text-purple ">Features</li>
-                        </a>
-                        <a href="#">
-                            <li class="text-salate mb-3 hover:text-purple">Detection</li>
-                        </a>
-                        <a href="#">
-                            <li class="text-salate mb-3 hover:text-purple">About us</li>
-                        </a>
-                        <a href="#">
-                            <li class="text-salate mb-3 hover:text-purple">Resource</li>
-                        </a>
-                        <a href="#FAQ">
-                            <li class="text-salate mb-3 hover:text-purple">F.A.Q</li>
-                        </a>
-                    </ul>
-                </div>
-
-                <div class="m-5 pt-5">
-                    <h4 class=" text-satoshi-p1 pb-3">Company</h4>
-                    <ul class="text-satoshi-p2 ">
-                        <a href="#">
-                            <li class="text-salate mb-3 hover:text-purple">Landing page</li>
-                        </a>
-                        <a href="#">
-                            <li class="text-salate mb-3 hover:text-purple">Model</li>
-                        </a>
-                        <a href="#">
-                            <li class="text-salate mb-3 hover:text-purple">Analysis</li>
-                        </a>
-                        <a href="#">
-                            <li class="text-salate mb-3 hover:text-purple">Privacy</li>
-                        </a>
-                    </ul>
-                </div>
-
-                <div class="m-5 pt-5">
-                    <h4 class=" text-satoshi-p1 pb-2">Tell Us Your Feedback</h4>
-                    <p class="text-salate pb-4">Sure, please provide us your opinion to help us improve</p>
-                    <form class="flex flex-row flex-wrap outline outline-offset-2 outline-1 rounded-sm outline-salate mb-3">
-                        <input type="text"
-                               class="text-satoshi-p2 bg-opacity-5 bg-white w-2/3 p-2  focus:outline-purple py-2"
-                               placeholder="Enter your Feedback..">
-                        <button class="p-2 w-1/3 bg-cyan text-darkPurple rounded-sm font-medium hover:bg-purple">Done
-                        </button>
-                    </form>
-                </div>
+              <a href="#"><i class='bx bxl-github text-xl hover:text-purple'></i></a>
+              <a href="#"><i class='bx bxl-instagram-alt text-xl hover:text-purple'></i></a>
+              <a href="#"><i class='bx bxl-discord-alt text-xl hover:text-purple'></i></a>
             </div>
+          </div>
+
+          <div class="m-5 pt-5">
+            <h4 class=" text-satoshi-p1 pb-2">Menu</h4>
+            <ul class="text-satoshi-p2 ">
+              <a href="#">
+                <li class="text-salate mb-3 hover:text-purple">Home</li>
+              </a>
+              <a href="#">
+                <li class="text-salate mb-3 hover:text-purple ">Features</li>
+              </a>
+              <a href="#">
+                <li class="text-salate mb-3 hover:text-purple">Detection</li>
+              </a>
+              <a href="#">
+                <li class="text-salate mb-3 hover:text-purple">About us</li>
+              </a>
+              <a href="#">
+                <li class="text-salate mb-3 hover:text-purple">Resource</li>
+              </a>
+              <a href="#FAQ">
+                <li class="text-salate mb-3 hover:text-purple">F.A.Q</li>
+              </a>
+            </ul>
+          </div>
+
+          <div class="m-5 pt-5">
+            <h4 class=" text-satoshi-p1 pb-3">Company</h4>
+            <ul class="text-satoshi-p2 ">
+              <a href="#">
+                <li class="text-salate mb-3 hover:text-purple">Landing page</li>
+              </a>
+              <a href="#">
+                <li class="text-salate mb-3 hover:text-purple">Model</li>
+              </a>
+              <a href="#">
+                <li class="text-salate mb-3 hover:text-purple">Analysis</li>
+              </a>
+              <a href="#">
+                <li class="text-salate mb-3 hover:text-purple">Privacy</li>
+              </a>
+            </ul>
+          </div>
+
+          <div class="m-5 pt-5">
+            <h4 class=" text-satoshi-p1 pb-2">Tell Us Your Feedback</h4>
+            <p class="text-salate pb-4">Sure, please provide us your opinion to help us improve</p>
+            <form class="flex flex-row flex-wrap outline outline-offset-2 outline-1 rounded-sm outline-salate mb-3">
+              <input type="text" class="text-satoshi-p2 bg-opacity-5 bg-white w-2/3 p-2  focus:outline-purple py-2"
+                placeholder="Enter your Feedback..">
+              <button class="p-2 w-1/3 bg-cyan text-darkPurple rounded-sm font-medium hover:bg-purple">Done</button>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
     <div class="mb-6">
-        <img src="{{ url_for('static', filename='images/Line 4.svg') }}">
+      <img src="/src/img/Line 4.svg">
     </div>
-</footer>
+  </footer>
 
-
-<script charset="utf-8">
-    let video_form = document.getElementById('video_form');
-    let resultBody = document.getElementById('results-body');
-    let submit_button = document.getElementById('submit_button');
-    let class_name = document.getElementById('class_name')
-    let confidence = document.getElementById('confidence')
-
-    let socket = io.connect('http://' + document.domain + ':' + location.port)
-
-    video_form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        resultBody.innerHTML = '';
-        class_name.innerHTML = '';
-        confidence.innerHTML = '';
-        let file = document.getElementById('dropzone-file').files[0];
-        if (file) {
-            let reader = new FileReader();
-            reader.onload = function (event) {
-                let mediaBytes = event.target.result;
-                let mediaType = file.type.startsWith('video/') ? 'video' : 'image';
-
-                let frames = document.getElementById('frames-input').value || 30; // Get frames value, or default to 30
-                if (mediaType === 'image') {
-                    frames = 1
-                }
-                let extractFaces = document.getElementById('extract-faces-input').checked;
-                socket.emit('process_media', {
-                    type: mediaType,
-                    frames: frames,
-                    media: mediaBytes,
-                    extract_faces: extractFaces
-                });
-                submit_button.disabled = true;
-            };
-            reader.readAsArrayBuffer(file);
-        } else {
-            console.log('not uploaded')
-        }
-
-    });
-
-    let mediaInput = document.getElementById('dropzone-file');
-    mediaInput.addEventListener('change', function (e) {
-        let file = e.target.files[0];
-        if (file) {
-            let reader = new FileReader();
-            reader.onload = function (event) {
-                let mediaType = file.type.startsWith('video/') ? 'video' : 'image';
-                if (mediaType === 'image') {
-                    console.log('image')
-                    document.getElementById('frames-input-label').style.display = 'none';
-
-                } else {
-                    document.getElementById('frames-input-label').style.display = 'block';
-                }
-            };
-            reader.readAsArrayBuffer(file);
-        }
-    });
-    let framesNumbers = [];
-    let framesConfidences = [];
-    let framesStatistics;
-    socket.on('processing_start', function (data) {
-        framesNumbers = [];
-        framesConfidences = [];
-        framesStatistics = [0, 0];
-        console.log(data)
-
-    });
-
-
-    socket.on('processing_progress', function (data) {
-showContainers();
-        resultBody.innerHTML += `
-        <tr class="border-t flex flex-row justify-between bg-gradient-to-r from-darkGreen  to-lightGreen mt-3 rounded-xl">
-              <td class="p-3 text-sm  tracking-wide text-center flex items-center pl-16">
-${data['frame_number']}
-<a href="${data['frame_path']}" target="_blank">
-
-<img class="w-24 h-50% ml-2 mr-2" src="${data['frame_path']}">
-</a>
-</td>
-              <td class="p-3 text-sm  tracking-wide text-center flex items-center ">${data['class_name']}</td>
-              <td class="p-3 text-sm  tracking-wide text-center flex items-center pr-16">${data['confidence']}%</td>
-            </tr>
-        `
-
-        framesNumbers.push(data['frame_number'])
-        framesConfidences.push(data['confidence'][0])
-        if (data['class_name'] === 'FAKE') {
-            framesStatistics[0]++;
-        } else {
-            framesStatistics[1]++;
-        }
-    });
-
-    socket.on('processing_result', function (data) {
-        class_name.innerText = data['class_name']
-        confidence.innerText = data['confidence'] + ' %'
-
-        console.log(data)
-        let framesContainer = document.getElementById('framesContainer');
-        framesContainer.innerHTML = '';
-        if (data['frames_paths']) {
-
-            data['frames_paths'].forEach(function (frame_path) {
-                framesContainer.innerHTML += `
-
-            <img src="${frame_path}" alt="Frame" class="carousel-item p-4"
-                 style="object-fit:cover ; width: 400px; height: auto;">
-            `
-            });
-        }
-
-        console.log(framesNumbers)
-        console.log(framesConfidences)
-        console.log(framesStatistics)
-        //charts
-        const chartOneData = {
-            labels: framesNumbers,
-            datasets: [{
-                backgroundColor: 'rgba(128, 0, 128, 0.2)',
-                borderColor: 'rgb(255, 255, 255)',
-                data: framesConfidences,
-                fill: true,
-                color: 'white'
-            }]
-        };
-
-        const config = {
-            type: 'line',
-            data: chartOneData,
-            options: {
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: false,
-                        text: 'Accuracy per time',
-                        font: {
-                            size: 18,
-                        },
-                        color: 'white', // Set the title color
-                        align: 'start' // Align title to the left
-                    },
-                    legend: {
-                        display: false // Hide the legend
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            display: false,
-                            color: 'white' // Set x axis grid color to white
-                        },
-                        ticks: {
-                            color: 'white' // Set x axis ticks color to white
-                        }
-                    },
-                    y: {
-                        grid: {
-                            display: false,
-                            color: 'white' // Set y axis grid color to white
-                        },
-                        ticks: {
-                            color: 'white' // Set y axis ticks color to white
-                        }
-                    }
-                }
-            },
-        };
-
-        // Doughnut chart Data
-        const data2 = {
-            labels: [
-                'Fake',
-                'Real',
-            ],
-            datasets: [{
-                label: 'Frame',
-                data: framesStatistics,
-                backgroundColor: [
-                    'rgb(189, 0, 255)',
-                    'rgb(43, 43, 54)',
-
-                ],
-                borderColor: 'rgba(24, 38, 39, 0.21)',
-                hoverOffset: 4
-            }]
-        };
-
-
-        // Doughnut chart config
-        const config2 = {
-            type: 'doughnut',
-            data: data2,
-            options: {
-                aspectRatio: 2.5,
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: false,
-                        text: 'Fake or Real',
-                        font: {
-                            size: 18,
-                        },
-                        color: 'white', // Set the title color
-                        align: 'start' // Align title to the left
-                    },
-                    legend: {
-                        display: true // Hide the legend
-                    }
-                },
-
-            },
-        };
-
-        const ctx = document.getElementById('myChart').getContext('2d');
-        new Chart(ctx, config);
-        const ctx2 = document.getElementById('doChart').getContext('2d');
-        new Chart(ctx2, config2);
-
-    });
-
-    function showContainers(){
-        let framesProcessingContainers=document.querySelectorAll('.processingContainer');
-        framesProcessingContainers.forEach(function(container){
-            container.style.display='block';
-        });
-    }
-
-    function hideContainers(){
-        let framesProcessingContainers=document.querySelectorAll('.processingContainer');
-        framesProcessingContainers.forEach(function(container){
-            container.style.display='none';
-        });
-    }
-
-    hideContainers();
-</script>
-<script>
+  <script>
     // FAQ JavaScript
     let items = document.querySelectorAll("#accordion .item .header");
     items.forEach((item) => {
-        item.addEventListener("click", (e) => {
-            //remove active class from all items
-            items.forEach((header) => {
-                const closestItem = header.closest(".item");
-                if (closestItem !== e.currentTarget.closest(".item")) {
-                    closestItem.classList.remove("active");
-                }
-            })
+      item.addEventListener("click", (e) => {
+        //remove active class from all items
+        items.forEach((header) => {
+          const closestItem = header.closest(".item");
+          if (closestItem !== e.currentTarget.closest(".item")) {
+            closestItem.classList.remove("active");
+          }
+        })
 
-            //this acive the clicked item
-            e.currentTarget.closest(".item").classList.toggle("active");
-        });
+        //this acive the clicked item
+        e.currentTarget.closest(".item").classList.toggle("active");
+      });
     })
-
     function changeColor(event, colorClass) {
-        // Prevent default behavior of link
-
-
-        // Remove cyan color from all menu items and set them to white
-        var menuItems = document.querySelectorAll('.menu-items');
-        menuItems.forEach(function (item) {
-            item.classList.remove('text-cyan'); // Remove cyan color class
-            item.classList.add('text-white'); // Set color to white
-        });
-
-        // Apply cyan color to the clicked menu item
-        event.target.classList.remove('text-white'); // Remove white color class
-        event.target.classList.add('text-cyan'); // Add cyan color class
+      // Prevent default behavior of link
+    
+    
+      // Remove cyan color from all menu items and set them to white
+      var menuItems = document.querySelectorAll('.menu-items');
+      menuItems.forEach(function(item) {
+        item.classList.remove('text-cyan'); // Remove cyan color class
+        item.classList.add('text-white'); // Set color to white
+      });
+    
+      // Apply cyan color to the clicked menu item
+      event.target.classList.remove('text-white'); // Remove white color class
+      event.target.classList.add('text-cyan'); // Add cyan color class
     }
-
-    let currentTranslates = {
-        carouselResources: 0,
-        carouselFrames: 0,
-        framesContainer: 0,
-
-    };
-
-    function slideLeft(carouselId) {
-
-        const container = document.getElementById(carouselId);
-        const itemWidth = container.querySelector('.carousel-item').offsetWidth;
-        currentTranslates[carouselId] += itemWidth;
-        currentTranslates[carouselId] = Math.min(currentTranslates[carouselId], 0);
-        container.style.transform = `translateX(${currentTranslates[carouselId]}px)`;
-    }
-
-    function slideRight(carouselId) {
-        const container = document.getElementById(carouselId);
-        const itemWidth = container.querySelector('.carousel-item').offsetWidth;
-        const maxTranslate = container.scrollWidth - container.offsetWidth;
-        currentTranslates[carouselId] -= itemWidth;
-        currentTranslates[carouselId] = Math.max(currentTranslates[carouselId], -maxTranslate);
-        container.style.transform = `translateX(${currentTranslates[carouselId]}px)`;
-    }
-
-    const dropzoneFileInput = document.getElementById('dropzone-file');
-    const uploadSection = document.getElementById('upload-section');
-    const fileDisplay = document.getElementById('file-display');
-    const uploadedImage = document.getElementById('uploaded-image');
-    const uploadedVideo = document.getElementById('uploaded-video');
-
-    dropzoneFileInput.addEventListener('change', (event) => {
-        const file = event.target.files[0];
-        if (file) {
-            if (file.type.startsWith('image/')) {
-                uploadedImage.src = URL.createObjectURL(file);
-                uploadedImage.style.display = 'block';
-                uploadedVideo.style.display = 'none';
-            } else if (file.type.startsWith('video/')) {
-                uploadedVideo.src = URL.createObjectURL(file);
-                uploadedVideo.style.display = 'block';
-                uploadedImage.style.display = 'none';
-            }
-            fileDisplay.style.display = 'flex';
-            uploadSection.style.display = 'none';
-        }
-    });
-
-
-</script>
+  </script>
 
 </body>
 
