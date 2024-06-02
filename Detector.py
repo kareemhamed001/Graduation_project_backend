@@ -40,7 +40,7 @@ class CNNModel:
                 img = np.expand_dims(img, axis=0)
                 prediction = self.model.predict(img)
 
-                predicted_class = "FAKE" if prediction < 0.4 else "REAL"
+                predicted_class = "FAKE" if prediction < 0.5 else "REAL"
                 return predicted_class, prediction
 
             return None, None
